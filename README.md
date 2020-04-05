@@ -14,3 +14,7 @@ npm run start
 ```
 
 Now check [localhost:3000](http://localhost:3000) to play!
+
+## Attributions
+
+> All emojis designed by OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0
