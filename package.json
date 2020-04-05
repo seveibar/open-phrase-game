@@ -11,12 +11,14 @@
     "better-sqlite3": "^6.0.1",
     "classnames": "^2.2.6",
     "micro": "^9.3.4",
+    "randomstring": "^1.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:ui": "react-scripts start",
+    "start:api": "micro-dev -p 3001 backend/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -44,6 +46,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
+    "micro-dev": "^3.0.0",
     "prettier": "^2.0.2"
   }
 }

@@ -16,17 +16,17 @@ export const Example1 = () => (
         name: "Player One",
         id: 1,
         isHost: true,
-        playerScore: 1,
+        score: 1,
       },
       {
         name: "Player Two",
         id: 2,
-        playerScore: 5,
+        score: 5,
       },
       {
         name: "Player Three",
         id: 3,
-        playerScore: 3,
+        score: 3,
       },
     ]}
     onPlayAgain={action("onPlayAgain")}
