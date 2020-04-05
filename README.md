@@ -1,6 +1,6 @@
 # Open Q-Lash
 
-A fun funny phrase game for friends and family.
+A fun funny phrase game for friends and family. [This was made on a live stream.](https://www.twitch.tv/videos/583743980)
 
 ## Usage
 
