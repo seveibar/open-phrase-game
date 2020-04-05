@@ -1,5 +1,7 @@
 # Open Q-Lash
 
+> This is not affiliated in any way with Jackbox Game's product Quiplash
+
 A fun funny phrase game for friends and family. [This was made on a live stream.](https://www.twitch.tv/videos/583743980)
 
 ## Usage
