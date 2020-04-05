@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "better-sqlite3": "^6.0.1",
     "classnames": "^2.2.6",
+    "concurrently": "^5.1.0",
     "micro": "^9.3.4",
     "randomstring": "^1.1.5",
     "react": "^16.13.1",
