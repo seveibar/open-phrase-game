@@ -7,7 +7,7 @@ CREATE TABLE room (
   code text NOT NULL,
   current_round_number INTEGER NOT NULL DEFAULT 0,
   current_match_number INTEGER NOT NULL DEFAULT 0,
-  last_start_time integer NOT NULL 0,
+  last_start_time integer NOT NULL DEFAULT 0,
   UNIQUE (code)
 )
 `

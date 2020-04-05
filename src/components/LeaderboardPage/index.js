@@ -15,7 +15,7 @@ export default ({ myPlayer, players, onPlayAgain }) => {
           {player.name} ({player.score})
         </div>
       ))}
-      {myPlayer.isHost && <Button onClick={onPlayAgain}>Play Again</Button>}
+      {myPlayer.host && <Button onClick={onPlayAgain}>Play Again</Button>}
     </PageContainer>
   )
 }

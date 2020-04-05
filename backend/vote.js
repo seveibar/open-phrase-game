@@ -5,7 +5,7 @@ const db = require("./db")
 const getGameState = require("./get-game-state")
 
 module.exports = async (req, res) => {
-  const { room_id, voting_player_id, answer_id } = micro
+  const { room_id, voting_player_id, answer_id } = await micro
     .json(req)
     .catch((e) => ({}))
   if (!room_id) return micro.send(res, 400, "need room_id")
@@ -16,5 +16,5 @@ module.exports = async (req, res) => {
     "INSERT INTO vote (voting_player_id, answer_id) VALUES (?, ?)"
   ).run(voting_player_id, answer_id)
 
-  res.send(res, 200, await getGameState(room_id))
+  micro.send(res, 200, await getGameState(room_id))
 }

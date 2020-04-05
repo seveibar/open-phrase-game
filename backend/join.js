@@ -9,7 +9,9 @@ module.exports = async (req, res) => {
   if (!code) return micro.send(res, 400, "need code")
   if (!name) return micro.send(res, 400, "need name")
 
-  const room = db.prepare("SELECT * FROM room WHERE code = ?").get(code)
+  const room = db
+    .prepare("SELECT * FROM room WHERE code = ?")
+    .get(code.toLowerCase())
 
   if (room.current_round_number !== 0)
     return micro.send(res, 400, "game already in progress")
@@ -19,5 +21,5 @@ module.exports = async (req, res) => {
     name
   )
 
-  res.send(res, 200, await getGameState(room.room_id))
+  micro.send(res, 200, await getGameState(room.room_id))
 }

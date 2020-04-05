@@ -12,5 +12,5 @@ module.exports = async (req, res) => {
     "UPDATE room SET last_start_time = ?, current_match_number = current_match_number + 1 WHERE room_id = ?"
   ).run(Date.now(), room_id)
 
-  res.send(res, 200, await getGameState(room_id))
+  micro.send(res, 200, await getGameState(room_id))
 }

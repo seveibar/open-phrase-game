@@ -9,13 +9,13 @@ export default {
 
 export const Example1 = () => (
   <LeaderboardPage
-    myPlayer={{ name: "Player One", id: 1, isHost: true }}
+    myPlayer={{ name: "Player One", id: 1, host: true }}
     revealed={false}
     players={[
       {
         name: "Player One",
         id: 1,
-        isHost: true,
+        host: true,
         score: 1,
       },
       {

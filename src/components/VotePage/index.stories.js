@@ -9,13 +9,13 @@ export default {
 
 export const Example1 = () => (
   <VotePage
-    myPlayer={{ name: "Player One", id: 1, isHost: true }}
+    myPlayer={{ name: "Player One", id: 1, host: true }}
     revealed={false}
     players={[
       {
         name: "Player One",
         id: 1,
-        isHost: true,
+        host: true,
       },
       {
         name: "Player Two",
@@ -45,13 +45,13 @@ export const Example1 = () => (
 
 export const Example2 = () => (
   <VotePage
-    myPlayer={{ name: "Player One", id: 1, isHost: true }}
+    myPlayer={{ name: "Player One", id: 1, host: true }}
     revealed
     players={[
       {
         name: "Player One",
         id: 1,
-        isHost: true,
+        host: true,
       },
       {
         name: "Player Two",

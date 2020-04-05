@@ -11,11 +11,11 @@ export default ({ players, myPlayer, onClickStartGame, code }) => {
         {players.map((player) => (
           <div key={player.id}>
             {player.name}
-            {player.isHost ? " (host)" : ""}
+            {player.host ? " (host)" : ""}
           </div>
         ))}
       </div>
-      {myPlayer.isHost && (
+      {Boolean(myPlayer.host) && (
         <Button onClick={onClickStartGame} disabled={players.length < 3}>
           Start Game
         </Button>

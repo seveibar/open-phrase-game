@@ -9,13 +9,13 @@ export default {
 
 export const Example1 = () => (
   <WaitingRoomPage
-    myPlayer={{ name: "Player One", id: 1, isHost: true }}
+    myPlayer={{ name: "Player One", id: 1, host: true }}
     code="ASDF"
     players={[
       {
         name: "Player One",
         id: 1,
-        isHost: true,
+        host: true,
       },
       {
         name: "Player Two",
@@ -38,7 +38,7 @@ export const Example2 = () => (
       {
         name: "Player One",
         id: 1,
-        isHost: true,
+        host: true,
       },
       {
         name: "Player Two",

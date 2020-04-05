@@ -22,11 +22,11 @@ module.exports = async (req, res) => {
     .get(roundRowid)
 
   const players = db
-    .prepare("SELECT * FROM player WHERE room_id= ? ORDER BY RAND()")
+    .prepare("SELECT * FROM player WHERE room_id= ? ORDER BY RANDOM()")
     .all(room_id)
 
   const questions = db
-    .prepare("SELECT * FROM question ORDER BY RAND() LIMIT ?")
+    .prepare("SELECT * FROM question ORDER BY RANDOM() LIMIT ?")
     .all(players.length)
 
   for (let matchNumber = 0; matchNumber < players.length; matchNumber++) {
@@ -48,5 +48,5 @@ module.exports = async (req, res) => {
     }
   }
 
-  res.send(res, 200, await getGameState(room_id))
+  micro.send(res, 200, await getGameState(room_id))
 }
