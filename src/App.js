@@ -10,8 +10,8 @@ import VotePage from "./components/VotePage"
 import { useLocalStorage } from "react-use"
 import useEventCallback from "use-event-callback"
 
-const VOTE_TIME = 3000 // 10000
-const REVEAL_TIME = 1000 // 10000
+const VOTE_TIME = 15000
+const REVEAL_TIME = 10000
 const ANSWER_TIME = 60000
 
 function App() {
