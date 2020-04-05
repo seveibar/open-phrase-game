@@ -22,7 +22,11 @@ export default ({
 
   if (!participants || !playerAnswers) return null
 
-  const answers = participants.map((playerId) => ({
+  const answers: Array<{
+    playerId: string | number,
+    voters: Array<{}>,
+    response: string,
+  }> = participants.map((playerId) => ({
     playerId,
     ...playerAnswers[playerId],
   }))
@@ -33,7 +37,9 @@ export default ({
 
   return (
     <PageContainer>
-      {canVote ? (
+      {revealed ? (
+        <h1>This is how people voted!</h1>
+      ) : canVote ? (
         <h1>Vote for the best answer!</h1>
       ) : (
         <h1>Wait for players to vote</h1>
@@ -51,7 +57,7 @@ export default ({
             {!revealed && canVote && (
               <Button onClick={() => onVote(answer.answerId)}>Vote</Button>
             )}
-            {revealed && answers.voters && (
+            {revealed && answer.voters && (
               <>
                 <h3>{answer.voters.length} Votes </h3>
                 {players

@@ -26,18 +26,19 @@ export const Example1 = () => (
         id: 3,
       },
     ]}
-    answers={[
-      {
-        playerId: 1,
-        id: 1,
+    participants={[1, 2]}
+    playerAnswers={{
+      1: {
         response: "Jane doe!",
+        voters: [3],
+        answerId: 1,
       },
-      {
-        playerId: 1,
-        id: 2,
-        response: "Something funny!",
+      2: {
+        response: "Something else!",
+        voters: [],
+        answerId: 2,
       },
-    ]}
+    }}
     onVote={action("onVote")}
     timeLeft={4500}
   />
@@ -70,20 +71,19 @@ export const Example2 = () => (
         id: 5,
       },
     ]}
-    answers={[
-      {
-        playerId: 1,
-        id: 1,
+    participants={[1, 2]}
+    playerAnswers={{
+      1: {
         response: "Jane doe!",
-        playerVotes: [3],
+        voters: [3],
+        answerId: 1,
       },
-      {
-        playerId: 1,
-        id: 2,
-        response: "Something funny!",
-        playerVotes: [4, 5],
+      2: {
+        response: "Something else!",
+        voters: [],
+        answerId: 2,
       },
-    ]}
+    }}
     onVote={action("onVote")}
     timeLeft={4500}
   />
