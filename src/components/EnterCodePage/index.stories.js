@@ -8,5 +8,8 @@ export default {
 }
 
 export const Example1 = () => (
-  <EnterCodePage onClickPlay={action("onClickPlay")} />
+  <EnterCodePage
+    onClickJoin={action("onClickJoin")}
+    onClickHost={action("onClickHost")}
+  />
 )

@@ -3,10 +3,10 @@ import { styled } from "@material-ui/core/styles"
 import PageContainer from "../PageContainer"
 import Button from "@material-ui/core/Button"
 
-export default ({ players, myPlayer, onClickStartGame }) => {
+export default ({ players, myPlayer, onClickStartGame, code }) => {
   return (
     <PageContainer>
-      <h1>Waiting Room</h1>
+      <h1>Waiting Room (Code: {code})</h1>
       <div>
         {players.map((player) => (
           <div key={player.id}>
