@@ -1,4 +1,4 @@
-# Open Q-Lash
+# Open Phrase Game
 
 > This is not affiliated in any way with Jackbox Game's product Quiplash
 
