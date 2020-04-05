@@ -14,6 +14,7 @@ export default ({ question, timeLeft, onClickDone }) => {
       <h1>Enter Your Response (you have {secondsLeft} seconds left)</h1>
       <h2>{question}</h2>
       <TextField
+        key={question}
         label="Your Response"
         variant="outlined"
         margin="normal"

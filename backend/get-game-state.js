@@ -25,7 +25,11 @@ const db = require("./db")
           matchNumber,
           questionText,
           participants: [1,2],
-          playerVotes: [3]
+          playerVotes: [3],
+          playerAnswers: {
+            "1": {response: "Jane Doe!" answerId: 1 },
+            "2": {response: "Another answer!" answerId: 2 }
+          }
         }
       ]
     }
@@ -37,7 +41,7 @@ module.exports = async (room_id) => {
   const room = db.prepare(`SELECT * FROM room WHERE room_id =?`).get(room_id)
   const players = db
     .prepare(
-      `SELECT player.name, player.player_id, player.host, (
+      `SELECT player.name, player.player_id as id, player.player_id as playerId, player.host, (
         SELECT COUNT(*) as score FROM vote
           INNER JOIN answer ON answer.answer_id = vote.answer_id
           WHERE answer.creator_player_id = player.player_id
@@ -57,7 +61,9 @@ module.exports = async (room_id) => {
     roomId: room.room_id,
     code: room.code,
     currentRoundNumber: room.current_round_number,
-    roundTypes: ["waiting", "pairs", "pairs", "pairs", "finish"],
+    currentMatchNumber: room.current_match_number,
+    lastStartTime: room.last_start_time,
+    roundTypes: ["waiting", "pairs", "finish"], //"pairs", "pairs", "finish"],
     players,
     rounds: rounds.map((round) => {
       const matches = db
@@ -88,11 +94,30 @@ module.exports = async (room_id) => {
             .prepare("SELECT * FROM match_participant WHERE match_id = ?")
             .all(match.match_id)
 
+          const answers = db
+            .prepare("SELECT * FROM answer WHERE match_id = ?")
+            .all(match.match_id)
+
+          const playerAnswers = {}
+          for (const answer of answers) {
+            const voters =
+              db
+                .prepare("SELECT * FROM vote WHERE answer_id=?")
+                .all(answer.answer_id) || []
+            playerAnswers[answer.creator_player_id] = {
+              answerId: answer.answer_id,
+              response: answer.response,
+              voters: voters.map((v) => v.voting_player_id),
+            }
+          }
+
           return {
+            matchId: match.match_id,
             matchNumber: match.match_number,
             questionText: match.question_text,
             playerVotes: playerVotes.map((answer) => answer.creator_player_id),
             participants: participants.map((p) => p.player_id),
+            playerAnswers,
           }
         }),
       }
