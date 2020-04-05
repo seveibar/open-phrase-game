@@ -20,6 +20,7 @@
     "use-event-callback": "^0.1.0"
   },
   "scripts": {
+    "start": "concurrently npm:start:ui npm:start:api",
     "start:ui": "react-scripts start",
     "start:api": "micro-dev -p 3001 backend/index.js",
     "build": "react-scripts build",
