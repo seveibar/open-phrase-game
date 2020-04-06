@@ -12,12 +12,14 @@
     "better-sqlite3": "^6.0.1",
     "classnames": "^2.2.6",
     "concurrently": "^5.1.0",
+    "confetti-js": "^0.0.18",
     "micro": "^9.3.4",
     "randomstring": "^1.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-use": "^14.0.0",
+    "seedrandom": "^3.0.5",
     "use-event-callback": "^0.1.0"
   },
   "scripts": {

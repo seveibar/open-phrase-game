@@ -9,6 +9,8 @@ import EnterResponsePage from "./components/EnterResponsePage"
 import VotePage from "./components/VotePage"
 import { useLocalStorage } from "react-use"
 import useEventCallback from "use-event-callback"
+import ColorProvider from "./components/ColorProvider"
+import getBackgroundColor from "./lib/get-background-color.js"
 
 const VOTE_TIME = 15000
 const REVEAL_TIME = 10000
@@ -130,34 +132,43 @@ function App() {
 
         if (!currentMatch)
           return (
-            <WaitingOnOthersPage
-              timeLeft={ANSWER_TIME - timeSinceStateChange}
-              players={gameState.players}
-              myPlayer={myPlayer}
-              finishedPlayers={gameState.players
-                .filter(
-                  (p) =>
-                    !currentRound.matches.some(
-                      (m) =>
-                        m.participants.includes(p.id) && !m.playerAnswers[p.id]
-                    )
-                )
-                .map((p) => p.id)}
-            />
+            <ColorProvider
+              currentColor={getBackgroundColor(gameState.currentRoundNumber)}
+            >
+              <WaitingOnOthersPage
+                timeLeft={ANSWER_TIME - timeSinceStateChange}
+                players={gameState.players}
+                myPlayer={myPlayer}
+                finishedPlayers={gameState.players
+                  .filter(
+                    (p) =>
+                      !currentRound.matches.some(
+                        (m) =>
+                          m.participants.includes(p.id) &&
+                          !m.playerAnswers[p.id]
+                      )
+                  )
+                  .map((p) => p.id)}
+              />
+            </ColorProvider>
           )
 
         return (
-          <EnterResponsePage
-            question={currentMatch.questionText}
-            timeLeft={ANSWER_TIME - timeSinceStateChange}
-            onClickDone={(response) => {
-              callAPI("/api/answer", {
-                response,
-                match_id: currentMatch.matchId,
-                creator_player_id: myPlayer.id,
-              })
-            }}
-          />
+          <ColorProvider
+            currentColor={getBackgroundColor(gameState.currentRoundNumber)}
+          >
+            <EnterResponsePage
+              question={currentMatch.questionText}
+              timeLeft={ANSWER_TIME - timeSinceStateChange}
+              onClickDone={(response) => {
+                callAPI("/api/answer", {
+                  response,
+                  match_id: currentMatch.matchId,
+                  creator_player_id: myPlayer.id,
+                })
+              }}
+            />
+          </ColorProvider>
         )
       } else {
         const currentMatchIndex = gameState.currentMatchNumber - 1

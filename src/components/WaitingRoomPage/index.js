@@ -4,6 +4,7 @@ import PageContainer from "../PageContainer"
 import Button from "@material-ui/core/Button"
 import Face from "../Face"
 import * as colors from "@material-ui/core/colors"
+import BigButton from "../BigButton"
 
 const TitleContainer = styled("div")({
   display: "flex",
@@ -40,24 +41,6 @@ const PlayerContainer = styled("div")({
   },
 })
 
-const StyledButton = styled(Button)({
-  marginTop: 42,
-  marginLeft: 4,
-  marginRight: 4,
-  fontSize: 24,
-  height: 82,
-  textTransform: "none",
-  fontWeight: "bold",
-  backgroundColor: colors.blue[600],
-  color: "#fff",
-  borderRadius: 64,
-  border: `2px solid rgba(0,0,0,0.8)`,
-  boxShadow: "0px 5px 10px rgba(0,0,0,0.2)",
-  "&:hover": {
-    backgroundColor: colors.blue[800],
-  },
-})
-
 const StyledFace = styled(Face)({
   marginTop: 8,
   marginLeft: 8,
@@ -79,7 +62,7 @@ export default ({ players, myPlayer, onClickStartGame, code }) => {
           {players.map((player, playerIndex) => (
             <PlayerContainer key={player.id}>
               <div>
-                <StyledFace index={playerIndex} />
+                <StyledFace index={player.id} />
               </div>
               <div className="name">
                 {player.name}
@@ -88,7 +71,7 @@ export default ({ players, myPlayer, onClickStartGame, code }) => {
             </PlayerContainer>
           ))}
         </div>
-        <StyledButton
+        <BigButton
           onClick={onClickStartGame}
           disabled={players.length < 3 || !myPlayer.host}
         >
@@ -97,7 +80,7 @@ export default ({ players, myPlayer, onClickStartGame, code }) => {
             : `Start Game${
                 players.length < 3 ? " (need atleast 3 players)" : ""
               }`}
-        </StyledButton>
+        </BigButton>
       </Content>
     </PageContainer>
   )

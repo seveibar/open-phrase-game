@@ -9,8 +9,9 @@ export default {
 
 export const Example1 = () => (
   <VotePage
-    myPlayer={{ name: "Player One", id: 1, host: true }}
+    myPlayer={{ name: "Player Three", id: 3 }}
     revealed={false}
+    questionText="Why did the chicken cross the road?"
     players={[
       {
         name: "Player One",
@@ -30,7 +31,7 @@ export const Example1 = () => (
     playerAnswers={{
       1: {
         response: "Jane doe!",
-        voters: [3],
+        voters: [],
         answerId: 1,
       },
       2: {
@@ -47,6 +48,7 @@ export const Example1 = () => (
 export const Example2 = () => (
   <VotePage
     myPlayer={{ name: "Player One", id: 1, host: true }}
+    questionText="Why did the chicken cross the road?"
     revealed
     players={[
       {
@@ -75,12 +77,12 @@ export const Example2 = () => (
     playerAnswers={{
       1: {
         response: "Jane doe!",
-        voters: [3],
+        voters: [],
         answerId: 1,
       },
       2: {
         response: "Something else!",
-        voters: [],
+        voters: [3, 4, 5],
         answerId: 2,
       },
     }}

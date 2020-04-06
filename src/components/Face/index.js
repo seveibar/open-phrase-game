@@ -1,6 +1,7 @@
 // @flow weak
 
 import React from "react"
+import seedrandom from "seedrandom"
 
 import monocle from "../../images/1F9D0_color.png"
 import smile1 from "../../images/1F60A_color.png"
@@ -34,6 +35,8 @@ const emojiSrcs = [
   smile13,
 ]
 
+const hash = (n) => Math.floor(seedrandom(n)() * emojiSrcs.length)
+
 export default ({ index, ...props }) => {
-  return <img {...props} src={emojiSrcs[index % emojiSrcs.length]} />
+  return <img {...props} src={emojiSrcs[hash(index) % emojiSrcs.length]} />
 }
