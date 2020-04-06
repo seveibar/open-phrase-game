@@ -20,9 +20,11 @@
     "react-scripts": "3.4.1",
     "react-use": "^14.0.0",
     "seedrandom": "^3.0.5",
+    "serve-handler": "^6.1.2",
     "use-event-callback": "^0.1.0"
   },
   "scripts": {
+    "start:prod": "micro -p 3000 backend/index.js",
     "start": "concurrently npm:start:ui npm:start:api",
     "start:ui": "react-scripts start",
     "start:api": "micro-dev -p 3001 backend/index.js",

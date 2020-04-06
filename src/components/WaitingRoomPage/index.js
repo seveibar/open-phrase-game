@@ -13,11 +13,20 @@ const TitleContainer = styled("div")({
   fontWeight: 600,
   backgroundColor: colors.blue[700],
   color: "#fff",
+})
+const Title = styled("div")({
   padding: 32,
 })
-const Title = styled("div")({})
 const WaitingRoomCode = styled("div")({
-  "& b": { fontWeight: 900 },
+  display: "flex",
+  alignItems: "center",
+  paddingRight: 32,
+  "& b": {
+    marginLeft: 16,
+    marginRight: 16,
+    color: "#fff",
+    fontSize: 48,
+  },
 })
 const Content = styled("div")({
   display: "flex",
@@ -54,7 +63,7 @@ export default ({ players, myPlayer, onClickStartGame, code }) => {
       <TitleContainer>
         <Title>Waiting Room</Title>
         <WaitingRoomCode>
-          Enter <b>{code}</b> to join the Room!
+          Enter <b>{code.toUpperCase()}</b> to join the Room!
         </WaitingRoomCode>
       </TitleContainer>
       <Content>

@@ -11,6 +11,8 @@ const answerEndpoint = require("./answer")
 const voteEndpoint = require("./vote")
 const restartGameEndpoint = require("./restart-game")
 
+const handler = require("serve-handler")
+
 module.exports = async (req, res) => {
   switch (req.url.replace("/api", "")) {
     case "/gamestate":
@@ -30,7 +32,9 @@ module.exports = async (req, res) => {
     case "/restartgame":
       return restartGameEndpoint(req, res)
     default: {
-      return micro.send(res, 404)
+      await handler(req, res, {
+        public: "./build",
+      })
     }
   }
 }
