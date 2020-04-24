@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@keyframes jostle {
+  0% {
+    transform: translate(0, 10px) rotate(3deg) scale(0.7, 1.2);
+  }
+  50% {
+    transform: translate(0, 10px) rotate(-3deg) scale(0.7, 1.2);
+  }
+  100% {
+    transform: translate(0, 10px) rotate(3deg) scale(0.7, 1.2);
+  }
+}

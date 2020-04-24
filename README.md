@@ -20,3 +20,5 @@ Now check [localhost:3000](http://localhost:3000) to play!
 > All emojis designed by OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0
 
 > 100 questions written by [Nicole Celestine](https://www.upwork.com/o/profiles/users/~01c7d55d416a33c825/). Thank you Nicole!
+
+> Sounds effects from https://github.com/JimLynchCodes/Game-Sound-Effects
