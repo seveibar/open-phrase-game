@@ -13,6 +13,8 @@ module.exports = async (req, res) => {
     .prepare("SELECT * FROM room WHERE code = ?")
     .get(code.toLowerCase())
 
+  if (!room) return micro.send(res, 404, "room not found")
+
   if (room.current_round_number !== 0)
     return micro.send(res, 400, "game already in progress")
 

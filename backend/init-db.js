@@ -8,6 +8,7 @@ CREATE TABLE room (
   current_round_number INTEGER NOT NULL DEFAULT 0,
   current_match_number INTEGER NOT NULL DEFAULT 0,
   last_start_time integer NOT NULL DEFAULT 0,
+  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE (code)
 )
 `

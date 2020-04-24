@@ -6,6 +6,7 @@ import PageContainer from "../PageContainer"
 import TextField from "@material-ui/core/TextField"
 import Button from "../BigButton"
 import * as colors from "@material-ui/core/colors"
+import ErrorBox from "../ErrorBox"
 import { useBackgroundColor } from "../ColorProvider"
 
 const TitleContainer = styled("div")({
@@ -19,6 +20,7 @@ const Title = styled("div")(({ bg }) => ({
   marginTop: 32,
   fontFamily: "Knewave",
   color: "#fff",
+  letterSpacing: "0.1em",
   // textShadow: `0px 0px 3px ${bg[800]}, 0px 0px 9px ${bg[800]}, 0px 0px 9px ${bg[800]}, 0px 0px 9px ${bg[800]}`,
   "-webkit-text-stroke": `1px ${bg[800]}`,
   textShadow: `5px 5px 0 ${bg[800]},
@@ -46,7 +48,7 @@ const Content = styled("div")({
   padding: 32,
 })
 
-export default ({ onClickJoin, defaultName, onClickHost }) => {
+export default ({ onClickJoin, defaultName, onClickHost, error }) => {
   const [fields, changeField] = useReducer(
     (fields, [field, val]) => ({ ...fields, [field]: val }),
     {
@@ -60,10 +62,8 @@ export default ({ onClickJoin, defaultName, onClickHost }) => {
   return (
     <PageContainer backgroundIndex={0}>
       <TitleContainer>
-        <Title bg={bg}>Open Phrase Game</Title>
-        <Subtitle bg={bg}>
-          A fun funny phrase game for friends and family
-        </Subtitle>
+        <Title bg={bg}>wordy.games</Title>
+        <Subtitle bg={bg}>A funny phrase game for friends and family</Subtitle>
       </TitleContainer>
       <Content>
         <TextField
@@ -85,6 +85,7 @@ export default ({ onClickJoin, defaultName, onClickHost }) => {
           }}
           onChange={(e) => changeField(["code", e.target.value])}
         />
+        <ErrorBox error={error} />
         <Button onClick={() => onClickJoin(fields)}>Join Game</Button>
         <Button onClick={() => onClickHost(fields)}>Host Game</Button>
       </Content>

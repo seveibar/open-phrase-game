@@ -21,6 +21,7 @@ function App() {
   const [gameState, changeGameState] = useState()
   const [playerName, changePlayerName] = useLocalStorage()
   const [myPlayer, changeMyPlayer] = useState()
+  const [error, changeError] = useState()
 
   const isHost = myPlayer && myPlayer.host
 
@@ -31,7 +32,20 @@ function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ room_id: roomId, ...body }),
-    }).then((r) => r.json())
+    })
+      .then((r) => {
+        if (r.status === 200) {
+          return r.json()
+        } else {
+          return r.text()
+        }
+      })
+      .then((r) => {
+        if (typeof r === "object") return r
+        changeError(r)
+        return null
+      })
+    if (!newGameState) return
     if (roomId !== newGameState.roomId) {
       changeRoomId(newGameState.roomId)
       changeMyPlayer(newGameState.players.find((p) => p.name === body.name))
@@ -99,11 +113,13 @@ function App() {
     return (
       <EnterCodePage
         defaultName={playerName}
+        error={error}
         onClickHost={async ({ name }) => {
           callAPI("/api/host", { name })
           changePlayerName(name)
         }}
         onClickJoin={async (fields) => {
+          changeError(null)
           callAPI("/api/join", fields)
           changePlayerName(fields.name)
         }}
